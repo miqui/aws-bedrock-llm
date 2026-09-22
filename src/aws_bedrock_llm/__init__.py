@@ -5,10 +5,10 @@ from .config import BedrockConfig, load_config
 
 __all__ = [
     "BedrockConfig",
-    "load_config",
-    "get_client",
-    "send_prompt",
     "extract_text",
+    "get_client",
+    "load_config",
+    "send_prompt",
 ]
 
 __version__ = "0.1.0"

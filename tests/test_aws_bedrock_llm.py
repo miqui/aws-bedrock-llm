@@ -2,7 +2,6 @@ import os
 import tempfile
 import unittest
 from pathlib import Path
-from unittest import mock
 
 from aws_bedrock_llm import config as config_mod
 from aws_bedrock_llm.client import extract_text, send_prompt

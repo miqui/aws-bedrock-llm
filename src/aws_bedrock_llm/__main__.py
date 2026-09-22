@@ -20,8 +20,8 @@ def build_parser() -> argparse.ArgumentParser:
         dest="config_path",
         default=None,
         help=(
-            "Path to a TOML config file (default: %s, or "
-            "$AWS_BEDROCK_CONFIG_PATH)" % DEFAULT_CONFIG_PATH
+            f"Path to a TOML config file (default: {DEFAULT_CONFIG_PATH}, or "
+            "$AWS_BEDROCK_CONFIG_PATH)"
         ),
     )
     return parser
@@ -38,7 +38,7 @@ def main(argv: list[str] | None = None) -> int:
 
     try:
         text = send_prompt(args.prompt, cfg=cfg)
-    except Exception as exc:  # pragma: no cover - network/AWS error path
+    except Exception as exc:  # noqa: BLE001 - intentional top-level CLI error handler
         print(f"Error calling Bedrock: {exc}", file=sys.stderr)
         return 1
 
