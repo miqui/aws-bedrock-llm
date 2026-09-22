@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aws-bedrock-llm"
+version = "0.1.0"
+description = "Minimal package for sending prompts to an AWS Bedrock LLM via the Converse API"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "boto3>=1.34",
+]
+
+[project.scripts]
+aws-bedrock-llm = "aws_bedrock_llm.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
