@@ -17,3 +17,8 @@ aws-bedrock-llm = "aws_bedrock_llm.__main__:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[dependency-groups]
+dev = [
+    "ruff",
+]

@@ -6,12 +6,12 @@ boto3 **Converse API** (`bedrock-runtime.converse()`).
 ## Install
 
 ```bash
-python3.11 -m venv .venv
-source .venv/bin/activate
-pip install -e .
+uv sync
 ```
 
 Requires Python >= 3.11 (uses stdlib `tomllib`). Only runtime dependency is `boto3`.
+Uses [uv](https://docs.astral.sh/uv/) for dependency management; `uv sync` creates
+`.venv` and installs runtime + dev (ruff) dependencies from `uv.lock`.
 
 ## Configuration
 
@@ -79,14 +79,14 @@ text = send_prompt("Hello", cfg=cfg)
 ## Run manually (CLI)
 
 ```bash
-# Console script (after `pip install -e .`)
-aws-bedrock-llm "What is Amazon Bedrock?"
+# Console script (after `uv sync`)
+uv run aws-bedrock-llm "What is Amazon Bedrock?"
 
-# Or as a module, no install needed if PYTHONPATH includes src/
-PYTHONPATH=src python -m aws_bedrock_llm "What is Amazon Bedrock?"
+# Or as a module
+uv run python -m aws_bedrock_llm "What is Amazon Bedrock?"
 
 # Point at a specific config file
-aws-bedrock-llm --config /path/to/config.toml "Hello there"
+uv run aws-bedrock-llm --config /path/to/config.toml "Hello there"
 ```
 
 Expected output shape (stderr shows the resolved config, stdout is the model's reply):
@@ -105,7 +105,7 @@ Stdlib `unittest` only, no network calls (the bedrock-runtime client is
 faked in tests):
 
 ```bash
-python -m unittest discover -v
+uv run python -m unittest discover -v
 ```
 
 ## Notes / defaults
